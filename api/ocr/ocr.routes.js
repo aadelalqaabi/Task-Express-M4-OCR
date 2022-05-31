@@ -1,7 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { ocrCreate } = require('./ocr.controllers');
+const { ocrCreate } = require("./ocr.controllers");
 
-router.post('/', ocrCreate);
+const upload = require("../../middleware/multer");
+
+router.post("/", upload.single("image"), ocrCreate);
 
 module.exports = router;
